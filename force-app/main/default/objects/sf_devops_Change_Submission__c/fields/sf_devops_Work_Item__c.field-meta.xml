@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sf_devops_Work_Item__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>sf_devops_Work_Item</label>
+    <referenceTo>sf_devops_Work_Item__c</referenceTo>
+    <relationshipLabel>sf_devops_Change_Submissions</relationshipLabel>
+    <relationshipName>sf_devops_Change_Submissions</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
