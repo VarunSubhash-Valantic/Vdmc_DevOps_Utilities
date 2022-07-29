@@ -21,4 +21,17 @@ public with sharing class QueryWorkItemById {
 
         return  RemoteChange ;
     }
+
+    public void main (String workItemId ) {
+
+        sf_devops_Work_Item__c Workitem = getWorkItem(workItemId);
+        sf_devops_Change_Submission__c ChangeSubmission = this.getChangeSubmission(workItemId);
+        changeSubmissionsId = ChangeSubmission.Id ;
+        List < sf_devops_Remote_Change__c> RemoteChange = getRemoteChange(changeSubmissionsId);
+        delete RemoteChange;
+        delete ChangeSubmission;
+        delete Workitem;
+
+    }
+
 }
