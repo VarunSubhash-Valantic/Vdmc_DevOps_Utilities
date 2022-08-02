@@ -1,29 +1,28 @@
 @isTest
 public class TestDataFactory {
 
-    public static sf_devops_Work_Item__c createWorkItem () {
+    @testSetup static void createWorkItem () {
 
         sf_devops_Work_Item__c a1 = new sf_devops_Work_Item__c();
         a1.Name = 'Work Item1';
         insert a1;
-        return a1;
 
     }
 
-    public static sf_devops_Change_Submission__c createChangeSubmission () {
+    @testSetup static void createChangeSubmission () {
 
         sf_devops_Change_Submission__c b1 = new  sf_devops_Change_Submission__c() ;
         b1.name = 'Change Submission 1';
         insert b1;
-        return b1;
+        
     }
 
-    public static  sf_devops_Remote_Change__c createRemoteChange () {
+    @testSetup static void createRemoteChange () {
 
         sf_devops_Remote_Change__c c1 = new sf_devops_Remote_Change__c();
         c1.name = 'Remote  Change 1';
         insert c1;
-        return c1;
+
     }
 
     @isTest

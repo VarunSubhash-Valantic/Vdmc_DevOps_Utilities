@@ -24,16 +24,24 @@ public with sharing class QueryWorkItemById {
 
     public  void main (String workItemId ) {
 
-        sf_devops_Work_Item__c Workitem = getWorkItem(workItemId);
-        List <sf_devops_Change_Submission__c> ChangeSubmission = getChangeSubmission(workItemId);
-        List<String> Ids = new List<String>();
-        for (sf_devops_Change_Submission__c i : ChangeSubmission){
-            Ids.add(i.Id);
-            }  
-        List < sf_devops_Remote_Change__c> RemoteChange = getRemoteChange(Ids);
-        delete RemoteChange;
-        delete ChangeSubmission;
-        delete Workitem;
+        try {
+
+            sf_devops_Work_Item__c Workitem = getWorkItem(workItemId);
+            List <sf_devops_Change_Submission__c> ChangeSubmission = getChangeSubmission(workItemId);
+            List<String> Ids = new List<String>();
+            for (sf_devops_Change_Submission__c i : ChangeSubmission){
+                Ids.add(i.Id);
+                }  
+            List < sf_devops_Remote_Change__c> RemoteChange = getRemoteChange(Ids);
+            delete RemoteChange;
+            delete ChangeSubmission;
+            delete Workitem;
+            
+        } catch (Exception e) {
+
+            System.debug('Insert a valid Id');
+            
+        }      
 
     }
 
