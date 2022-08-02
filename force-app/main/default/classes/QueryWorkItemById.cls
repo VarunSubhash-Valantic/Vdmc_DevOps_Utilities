@@ -8,7 +8,7 @@ public with sharing class QueryWorkItemById {
 
     }
 
-    public static sf_devops_Change_Submission__c getChangeSubmission (String workItemsId) {
+    public static List <sf_devops_Change_Submission__c > getChangeSubmission (String workItemsId) {
 
         List <sf_devops_Change_Submission__c>  ChangeSubmission = [ SELECT Id, Name FROM sf_devops_Change_Submission__c WHERE sf_devops_Work_Item__c =: workItemsId]  ;
 
@@ -22,13 +22,13 @@ public with sharing class QueryWorkItemById {
         return  RemoteChange ;
     }
 
-    public void main (String workItemId ) {
+    public  void main (String workItemId ) {
 
         sf_devops_Work_Item__c Workitem = getWorkItem(workItemId);
-        sf_devops_Change_Submission__c ChangeSubmission = this.getChangeSubmission(workItemId);
-        List<String> Ids = new List<Sting>();
-        for (String i : ChangeSubmission){
-            Ids.add(ChangeSubmission.Id);
+        List <sf_devops_Change_Submission__c> ChangeSubmission = getChangeSubmission(workItemId);
+        List<String> Ids = new List<String>();
+        for (sf_devops_Change_Submission__c i : ChangeSubmission){
+            Ids.add(i.Id);
             }  
         List < sf_devops_Remote_Change__c> RemoteChange = getRemoteChange(Ids);
         delete RemoteChange;
